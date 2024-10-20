@@ -20,11 +20,13 @@ import { RunnableWithMessageHistory } from "@langchain/core/runnables";
 import { UpstashRedisChatMessageHistory } from "@langchain/community/stores/message/upstash_redis";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { TextLoader } from "langchain/document_loaders/fs/text";
+const cors = require("cors");
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 async function loadTxt() {
   const files = [
